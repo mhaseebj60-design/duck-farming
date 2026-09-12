@@ -1,21 +1,38 @@
-# Duck Farming — Netlify + Supabase
+# Duck Farming — Complete Replacement
 
-React + Vite + Supabase customer/admin website. Mobile-first duck-farming dashboard.
+This package is the replacement frontend/backend migration for the **Duck Farming** website.
 
-## Setup
-1. Copy `.env.example` to `.env.local`.
-2. Put your Supabase Project URL and Publishable Key in `.env.local`.
-3. You already ran the main schema and created `payment-slips`. Run `supabase/02_app_functions.sql` in Supabase SQL Editor.
-4. Create an admin in Supabase Authentication, then use `supabase/03_create_admin.sql` with that user's UUID.
-5. Run `npm install` then `npm run dev` to test.
-6. Push the folder to GitHub and import the repository into Netlify.
-7. Netlify build command: `npm run build`; publish directory: `dist`.
-8. Add `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY` as Netlify environment variables.
+## Included
+- React/Vite frontend
+- Premium responsive UI
+- Customer authentication
+- Admin/customer role routing
+- Multiple duck types
+- Duck price, lifetime (1–100 days), egg interval, enable/disable
+- Payment methods CRUD
+- Payment slip + TID submission
+- Admin deposit approval/rejection
+- First egg on approved purchase
+- Automatic due-egg claiming
+- Referral ID registration
+- Referral reward: one egg every 24h for 3 days after referred customer buys a duck and payment is approved
+- Per-customer referral commission 1–100%
+- Withdrawal ranges/rates CRUD
+- Withdrawal review
+- Customer management
+- Site/admin settings
+- Supabase Storage payment-slips bucket
+- Netlify SPA redirect
 
-## Security
-Never put a Supabase secret/service-role key in this project. Use only the publishable key in browser code. Keep RLS enabled. Payment slips use a private Storage bucket.
+## Netlify variables
+Set:
+VITE_SUPABASE_URL=https://kaggeadntgpsxrhrhdxu.supabase.co
+VITE_SUPABASE_PUBLISHABLE_KEY=<Supabase publishable/anon key>
 
-## Business rules
-One active duck lasts 80 days by default. One egg becomes due every 24 hours. Egg generation is performed by the database function `claim_due_eggs()` rather than trusting the customer's browser clock. Manual payment is recorded with TID + slip and requires admin approval.
+Never put a Supabase service_role key in frontend code.
 
-Test all payment, approval, egg and withdrawal flows before accepting real money.
+## Supabase
+Run `duck_farming_complete.sql` in Supabase SQL Editor.
+
+## Important
+The GitHub connector previously returned HTTP 403 when attempting to commit the replacement. This ZIP is therefore the complete file set to upload to the intended `mhaseebj60-design/duck-farming` repository; it does not claim that GitHub was automatically updated.
