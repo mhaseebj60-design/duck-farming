@@ -1,6 +1,14 @@
-# Duck Farming — Complete Replacement
+# Duck Farming — Complete Replacement V2
 
-This package is the replacement frontend/backend migration for the **Duck Farming** website.
+This is the corrected complete replacement package for the **Duck Farming** site.
+
+## Build/deployment fix included
+- `src/main.jsx` is now in the correct Vite source folder.
+- `src/styles.css` is now in the correct Vite source folder.
+- `index.html` now loads `/src/main.jsx`.
+- `src/main.jsx` correctly imports the root `App.jsx` with `../App`.
+- Netlify is pinned to Node `22.12.0`, compatible with the included Vite version.
+- `package.json` includes the same Node requirement.
 
 ## Included
 - React/Vite frontend
@@ -24,15 +32,33 @@ This package is the replacement frontend/backend migration for the **Duck Farmin
 - Supabase Storage payment-slips bucket
 - Netlify SPA redirect
 
-## Netlify variables
-Set:
-VITE_SUPABASE_URL=https://kaggeadntgpsxrhrhdxu.supabase.co
-VITE_SUPABASE_PUBLISHABLE_KEY=<Supabase publishable/anon key>
+## Supabase environment variables
+Set these in Netlify:
+- `VITE_SUPABASE_URL=https://kaggeadntgpsxrhrhdxu.supabase.co`
+- `VITE_SUPABASE_PUBLISHABLE_KEY=<your Supabase publishable/anon key>`
 
-Never put a Supabase service_role key in frontend code.
+Never put a Supabase `service_role` key in frontend code.
 
-## Supabase
-Run `duck_farming_complete.sql` in Supabase SQL Editor.
+## Supabase database
+Run `duck_farming_complete.sql` in the Supabase SQL Editor.
+
+## Correct project structure
+```text
+duck-farming/
+├── App.jsx
+├── index.html
+├── package.json
+├── netlify.toml
+├── .nvmrc
+├── .env.example
+├── duck_farming_complete.sql
+├── README.md
+├── lib/
+│   └── supabase.js
+└── src/
+    ├── main.jsx
+    └── styles.css
+```
 
 ## Important
-The GitHub connector previously returned HTTP 403 when attempting to commit the replacement. This ZIP is therefore the complete file set to upload to the intended `mhaseebj60-design/duck-farming` repository; it does not claim that GitHub was automatically updated.
+This ZIP is a file replacement package. It does not claim that the GitHub repository was automatically updated.
