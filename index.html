@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Duck Farming</title>
+
+    <!-- OneSignal Web Push Notifications -->
+    <script
+      src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js"
+      defer
+    ></script>
+
+    <script>
+      window.OneSignalDeferred = window.OneSignalDeferred || [];
+
+      OneSignalDeferred.push(async function (OneSignal) {
+        await OneSignal.init({
+          appId: "e842b26f-c131-4543-9141-6a9ca2e0244b",
+          safari_web_id:
+            "web.onesignal.auto.1947bcbb-3df5-45a5-b464-0be0e15f4a2c",
+
+          notifyButton: {
+            enable: true,
+          },
+        });
+      });
+    </script>
+  </head>
+
+  <body>
+    <div id="root"></div>
+
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
